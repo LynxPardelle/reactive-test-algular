@@ -1,0 +1,16 @@
+<p>users works!</p>
+@if (users$ | async; as users){
+<ul>
+  @for (user of users; track user.id) {
+  <li>
+    <a href="/user/{{ user.id }}">{{ user.name }}</a>
+  </li>
+  }
+</ul>
+}
+
+<button (click)="dispatchUsers()">Dispatch users</button>
+<form (ngSubmit)="addUser()" [formGroup]="userForm">
+  <input type="text" name="name" formControlName="name" />
+  <button type="submit">Add user</button>
+</form>
